@@ -142,9 +142,9 @@ Demo ids: Android `com.identixia.facerecognitionsdk` · iOS `com.identixia.facer
 
 The code below shows how to use the license:
 
-https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/e4749f90465e805224d1057001650c8745efe906/example/src/license.ts#L8-L18
+https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/3731fa315c623962ebbd6c7f72310eaffc9b83fd/example/src/license.ts#L8-L18
 
-https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/e4749f90465e805224d1057001650c8745efe906/example/src/SdkContext.tsx#L72-L85
+https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/3731fa315c623962ebbd6c7f72310eaffc9b83fd/example/src/SdkContext.tsx#L72-L85
 
 Capabilities: face recognition (detect / templates / match) and/or passive face liveness. Please [contact us](#-contact) to get a license for **your own app**.
 
