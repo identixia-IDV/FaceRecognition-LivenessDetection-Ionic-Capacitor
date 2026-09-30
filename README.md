@@ -29,15 +29,15 @@ Package: `face-recognition-capacitor`. Demo modes: **Enroll · Identify · Captu
 
 ## <img src="https://api.iconify.design/lucide/clipboard-list.svg?color=%230F766E" width="24" height="24" alt="" /> Basics
 
-Read this once before cloning. Plugin demos ship a **bundled license** for the sample Android / iOS ids. Production apps need a new key. [Initial commands](#-initial-commands) lists clone → run → activate. The example uses the engines already in this repo. Your app installs tag `v1.0.0`.
+Read this once before cloning. Plugin demos ship a **bundled license** for the sample Android / iOS ids. Production apps need a new key. [Initial commands](#-initial-commands) lists clone → place runtime → run → activate options.
 
 | Topic | Basic information |
 | --- | --- |
 | **Product** | On-device **face recognition** Ionic Capacitor plugin |
 | **Modes** | Enroll · Identify (1:N) · Capture · Attribute |
 | **API** | Detect · templates · identify · optional passive liveness |
-| **Runtime** | Example uses the engines already in this repo. Your app installs tag `v1.0.0` |
-| **Demo id** | Android `com.identixia.facerecognitionsdk` · iOS `com.identixia.facerecognitionsdk.app` |
+| **Runtime** | Android AAR + iOS frameworks from Drive zips `PENDING` |
+| **Demo id** | `com.identixia.facerecognitionsdk` |
 | **Tools** | npm · Capacitor · physical arm64 Android / iPhone |
 | **UI** | Four demo modes after Ready |
 | **Privacy** | Templates stay on device — no Identixia cloud |
@@ -49,13 +49,14 @@ Read this once before cloning. Plugin demos ship a **bundled license** for the s
 
 Must-know path for the sample / example app.
 
-### <img src="https://img.shields.io/badge/-1-0F766E?style=for-the-badge" alt="" /> Clone and run
+### <img src="https://img.shields.io/badge/-1-0F766E?style=for-the-badge" alt="" /> Clone, place runtime, run
 
 ```bash
 git clone https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor.git
 cd FaceRecognition-LivenessDetection-Ionic-Capacitor
 npm install && npm run build
 cd example && npm install
+# place runtimes
 npm run build && npx cap sync
 npx cap open android
 ```
@@ -109,14 +110,13 @@ Wait until Home = **Ready**, then Camera / Gallery. Confirm Result / About shows
 
 ## <img src="https://api.iconify.design/lucide/package.svg?color=%230F766E" width="24" height="24" alt="" /> Install
 
-The example uses `example/android/libfacesdk/` and `ios/Frameworks/` when those files are already here. `npx cap sync` downloads the `v1.0.0` GitHub Releases only when a file is missing.
+The example builds with native runtimes already in the clone when present. Gradle / CocoaPods download the `v1.0.0` GitHub Releases only when a file is missing.
 
-Your app:
+- `example/android/libfacesdk/` · `ios/Frameworks/`
 
-```bash
-npm install github:Identixia/FaceRecognition-LivenessDetection-Ionic-Capacitor#v1.0.0
-npx cap sync
-```
+Customer apps depend on `face-recognition-capacitor` from this repo at tag `v1.0.0` (Flutter: git dependency; React Native / Ionic: npm / github package). Do **not** use a monorepo `path:` dependency in shipping apps.
+
+Android: keep `packaging { jniLibs { useLegacyPackaging = true } }` so `libFaceRecognitionEngine.so` is extracted for `nativeInitEngine`.
 
 ---
 
@@ -127,6 +127,7 @@ git clone https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ion
 cd FaceRecognition-LivenessDetection-Ionic-Capacitor
 npm install && npm run build
 cd example && npm install
+# place runtimes
 npm run build && npx cap sync
 npx cap open android
 ```
@@ -138,13 +139,13 @@ After Ready, open **Enroll · Identify · Capture · Attribute**.
 
 ## <img src="https://api.iconify.design/lucide/key-round.svg?color=%230F766E" width="24" height="24" alt="" /> License
 
-Demo ids: Android `com.identixia.facerecognitionsdk` · iOS `com.identixia.facerecognitionsdk.app`.
+Demo id: `com.identixia.facerecognitionsdk`.
 
 The code below shows how to use the license:
 
-https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/3731fa315c623962ebbd6c7f72310eaffc9b83fd/example/src/license.ts#L8-L18
+[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/54204547fdf955489e4213e82c2f8a809533433e/example/src/license.ts#L7-L15](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/54204547fdf955489e4213e82c2f8a809533433e/example/src/license.ts#L7-L15)
 
-https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/3731fa315c623962ebbd6c7f72310eaffc9b83fd/example/src/SdkContext.tsx#L72-L85
+[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/54204547fdf955489e4213e82c2f8a809533433e/example/src/SdkContext.tsx#L60-L70](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/54204547fdf955489e4213e82c2f8a809533433e/example/src/SdkContext.tsx#L60-L70)
 
 Capabilities: face recognition (detect / templates / match) and/or passive face liveness. Please [contact us](#-contact) to get a license for **your own app**.
 
@@ -152,14 +153,16 @@ Capabilities: face recognition (detect / templates / match) and/or passive face 
 
 ## <img src="https://api.iconify.design/lucide/puzzle.svg?color=%230F766E" width="24" height="24" alt="" /> Use in your app
 
-Install `face-recognition-capacitor` at tag `v1.0.0`, run `npx cap sync`, then enroll / identify / capture.
+Install `face-recognition-capacitor`, sync native projects with runtimes, then call plugin APIs for enroll / identify / capture / attributes.
+
+Typical flow: depend on `face-recognition-capacitor` at `v1.0.0` → ship / download native runtimes → activate → init → enroll / identify / capture. Prefer package kits (`FaceCapture`, …) over reinventing the camera UI. Keep demo ids only while using sample licenses.
 
 | Step | Detail |
 | --- | --- |
-| 1 | `npm install github:Identixia/FaceRecognition-LivenessDetection-Ionic-Capacitor#v1.0.0` |
-| 2 | `npx cap sync` and open the native project |
-| 3 | Activate → init on a physical device |
-| 4 | Enroll / Identify (1:N) / Capture / Attribute, plus liveness when licensed |
+| 1 | Depend on `face-recognition-capacitor` at tag `v1.0.0` (standalone clone — no monorepo `path:`) |
+| 2 | Keep or download Android AAR + iOS frameworks (`v1.0.0` Release) |
+| 3 | Activate → init on a physical device (`useLegacyPackaging = true` on Android) |
+| 4 | Wire Enroll / Identify (1:N) / Capture / Attribute (+ liveness if licensed) |
 
 ---
 
