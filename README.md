@@ -143,9 +143,9 @@ Demo id: `com.identixia.facerecognitionsdk`.
 
 The code below shows how to use the license:
 
-[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/b9fa768c703b072733089162bb4b512c9469edcb/example/src/license.ts#L7-L15](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/b9fa768c703b072733089162bb4b512c9469edcb/example/src/license.ts#L7-L15)
+[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/411757d863343f858257a9e32bc9fe64b39a0988/example/src/license.ts#L7-L15](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/411757d863343f858257a9e32bc9fe64b39a0988/example/src/license.ts#L7-L15)
 
-[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/b9fa768c703b072733089162bb4b512c9469edcb/example/src/SdkContext.tsx#L60-L70](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/b9fa768c703b072733089162bb4b512c9469edcb/example/src/SdkContext.tsx#L60-L70)
+[https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/411757d863343f858257a9e32bc9fe64b39a0988/example/src/SdkContext.tsx#L60-L70](https://github.com/identixia-IDV/FaceRecognition-LivenessDetection-Ionic-Capacitor/blob/411757d863343f858257a9e32bc9fe64b39a0988/example/src/SdkContext.tsx#L60-L70)
 
 Capabilities: face recognition (detect / templates / match) and/or passive face liveness. Please [contact us](#-contact) to get a license for **your own app**.
 
